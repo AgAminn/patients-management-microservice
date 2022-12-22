@@ -5,11 +5,15 @@ Functions to edit :
  - #doctors data (future addition)
  - ...
 '''
+import os.path
 from tinydb import TinyDB, Query
 from patient import Patient
 
 #database initialisation
-db = TinyDB("patients_db.json")
+# load dataset TinyDB tbale
+db = {}
+if os.path.exists("src/patients_db.json"):
+  db = TinyDB("src/patients_db.json")
 
 
 def to_dic(obj):
