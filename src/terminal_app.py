@@ -1,7 +1,7 @@
 print('starting app')
    
-from flask import Flask, jsonify, request
-from patient_func import patient_menu, db
+from flask import Flask, jsonify
+from patient_func import patients_menu, db
 
 app = Flask(__name__)
 
@@ -10,54 +10,26 @@ def present_data():
   #data = open('src/patients_db.json')
   return db.all() #json.load(data)
 
-@app.route('/create_patient/', methods=['POST'])
-def create_patient():
-    # Get the patient's name and age from the request body
-    print('getting request / json object with opulated args')
-    req = request.get_json()
-    id = req['id']
-    name = req['name']
-    diagnosis = req['diagnosis']
-    age = req['age']
-    PatientL = patient_menu(id=id,name=name,diagnosis=diagnosis,age=age) 
-    PatientL.add_patient()
-    return "Successfully created patient with name {} and age {} and id {} and diagnosis {} ".format(name, age, id, diagnosis)
+if __name__ == "__main__":
+    choice= ''
+    while True:
+      print('')
+      print("0- return to Main Menu ")
+      print("1- Access patient's menu ")
+      print("2- Run flask app on local host ")
 
-@app.route('/update_patient/<int:id>', methods=['POST'])
-def update_patient(id):
-  print(' updateing patient: getting id and args in body')
-  print('id ',id)
-  req = request.get_json()
-  name = req['name']
-  print('name ', name)
-  diagnosis = req['diagnosis']
-  print(diagnosis)
-  age = req['age']
-  print(id, name, age, diagnosis)
-  PatientL = patient_menu(id=id,name=name,diagnosis=diagnosis,age=age) 
-  result = PatientL.edit_patient(id=id)
-  if result == 'Invalid ID request':
-    return result
-  return "Successfully updateded patient with id {} , name {} , age {} and diagnosis {} ".format(name, age, id, diagnosis)
+      choice= input("Enter option: ")
+      choice=choice.strip()
+    
+      if choice=='1':
+        patients_menu()
+      if choice=='2':
+        app.run(host='0.0.0.0')
+      elif choice=='0':
+        break
+      else:
+        print('invalid choice, please try again')
 
-@app.route('/delete_patient/<int:id>', methods=['DELETE'])
-def delete_patient(id):
-  PatientL = patient_menu() 
-  result = PatientL.remove_patient(id=id)
-  return result
-
-@app.route('/get_patient/<int:id>', methods=['GET'])
-def get_patient(id):
-  PatientL = patient_menu() 
-  p= PatientL.display_patient(id=id)
-  return p #json.load(data)
-
-if __name__ == '__main__':
-  app.run(host='0.0.0.0')
-
-
-
-'''
 from flask import Flask, request
 import mysql.connector
 
@@ -152,4 +124,3 @@ def delete_patient(id):
   # Commit the changes to the database
   mydb.commit()
 
-'''

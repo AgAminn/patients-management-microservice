@@ -75,6 +75,9 @@ class patient_edit:
                 return id
     
     def set_name(self):
+      if self._name !=None:
+        if (self._name).isalpha()==True :
+          return self._name
       while True:
         try:
           name = input("Please enter patient Name: ")
@@ -87,6 +90,8 @@ class patient_edit:
           return name.capitalize()
     
     def set_diagnosis(self):
+      if self._diagnosis != None:
+        return self._diagnosis
       while True:
         try:
           diagnosis = input("Please enter patient diagnosis: ")
@@ -99,9 +104,9 @@ class patient_edit:
           return diagnosis.capitalize()
 
 class patient_menu:
-  def __init__(self):
+  def __init__(self,name=None,diagnosis=None,age=None, id=None):
      self.query = Query()
-     self.patient_edit = patient_edit()
+     self.patient_edit = patient_edit(name=name,diagnosis=diagnosis,age=age, id=id)
   
   def display_patient(self,id=None):
     '''
@@ -116,9 +121,10 @@ class patient_menu:
 
     patient_ids  = [p['id'] for p in db]
     if id !=None:
-      if isinstance(self._id, int):
-        if id in patient_ids:
+      if isinstance(id, int) and (id in patient_ids):
           return query_id(id)
+      else:
+        return 'Invalid ID request'
           
     while True:
       try:
@@ -164,6 +170,10 @@ class patient_menu:
     input : id
     output : diplayed edited data and return populated patient object
     '''
+    patient_ids  = [p['id'] for p in db]
+    if id !=None:
+      if (isinstance(id, int) and (id in patient_ids)) == False:
+        return 'Invalid ID request'
     print('data to be edited : ')
     patient = self.display_patient(id)
     id_db = patient.doc_id
@@ -180,11 +190,17 @@ class patient_menu:
     return patient_ed
   
   def remove_patient(self,id=None):
+    #check the default id is valid or not
+    patient_ids  = [p['id'] for p in db]
+    if id !=None:
+      if (isinstance(id, int) and (id in patient_ids)) == False:
+        return 'Invalid ID request'
+    
     print('data to be removed : ')
     q= self.display_patient(id)
     id_db = q.doc_id
     db.remove(doc_ids=[id_db])
-    return None
+    return "Successfully deleded patient with id {}  ".format(id)
 
 
 def patients_menu():
