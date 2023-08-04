@@ -7,7 +7,7 @@ Functions to edit :
 '''
 import os.path
 from tinydb import TinyDB, Query
-from patient import Patient
+from src.patient import Patient
 
 #database initialisation
 # load dataset TinyDB tbale

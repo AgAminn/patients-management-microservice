@@ -1,0 +1,46 @@
+#!/usr/bin/env groovy
+pipeline {
+    agent any
+
+    environment {
+    }
+
+    stages {
+        
+        stage ("Init" ) {
+            steps {
+                echo 'welcome to Code Review Pipeline'
+                echo 'Init env values'
+
+            }
+        }
+
+        stage ("Test" ) {
+            steps {
+                echo 'check code quqlity'
+                
+            }
+        }
+
+        stage ("Build" ) {
+            steps {
+                echo 'Build docker image'
+                echo 'tag docker image'
+                
+            }
+        }
+
+        stage ("Deploy" ) {
+            steps {
+                echo 'Deploy pod -- helm install'
+            }
+        }
+
+        stage ("Clean Up" ) {
+            steps {
+                echo 'remove dangling docker images'
+            }
+        }
+
+    }
+}

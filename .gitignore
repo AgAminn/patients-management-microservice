@@ -360,3 +360,5 @@ MigrationBackup/
 
 #personalized gitignore
 /work_env/
+/utils/jenkins_server_configs.yaml
+/utils/documentation

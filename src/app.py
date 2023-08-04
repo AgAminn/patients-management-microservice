@@ -1,7 +1,12 @@
 print('starting app')
-   
+
+import os
+cwd = os.getcwd()
+# Change the current working directory
+#os.chdir('./src')
+print(os.getcwd())
 from flask import Flask, jsonify, request
-from patient_func import patient_menu, db
+from src.patient_func import patient_menu, db
 
 app = Flask(__name__)
 
@@ -53,7 +58,9 @@ def get_patient(id):
   return p #json.load(data)
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0')
+  port = int(os.environ.get('PORT', 5000))
+  app.run(debug=True, host='0.0.0.0', port=port)
+
 
 
 
