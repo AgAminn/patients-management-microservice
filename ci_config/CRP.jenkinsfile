@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
 
 pipeline {
     agent any
@@ -6,7 +7,7 @@ pipeline {
     environment {
         GIT_BRANCH = "${git_branch}"
         BUILD_TYPE = "debug"
-        CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
+        // CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
     }
 
     stages {
@@ -24,7 +25,7 @@ pipeline {
                     // if (config.parameters.BUILD_TYPE) {
                     //     env.BUILD_TYPE = config.parameters.BUILD_TYPE
                     // }
-                    echo CONFIG_CI.properties.project_nmae
+                    echo configx.properties.project_nmae
                 }
             }
         }
