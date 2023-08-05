@@ -14,6 +14,7 @@ pipeline {
             steps {
                 echo 'welcome to Code Review Pipeline'
                 echo 'Init env values'
+                echo $PWD
                 script {
                     def config = readYaml file: 'jenkins_crp.yaml'
                     if (config.parameters.GIT_BRANCH) {
