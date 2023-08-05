@@ -28,7 +28,7 @@ pipeline {
                     //     env.BUILD_TYPE = config.parameters.BUILD_TYPE
                     // }
                     // echo config
-                    echo config.properties.project_name
+                    echo config.properties.project_name.toString()
                     env.CONFIG_CI = config
                 }
             }
