@@ -18,7 +18,7 @@ pipeline {
                     def config = readYaml file: 'ci_config/jenkins_crp.yaml'
                     echo 'welcome to Code Review Pipeline'
                     echo 'Init env values'
-                    echo $PWD
+                    echo 'PWD'
                     sh 'pwd' // Print current working directory
                     sh 'ls -lR'
                     // if (CONFIG_CI.parameters.GIT_BRANCH) {
