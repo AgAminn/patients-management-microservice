@@ -1,0 +1,13 @@
+parameters:
+  - string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch to build')
+  - choice(name: 'BUILD_TYPE', choices: ['Debug', 'Release'], description: 'Select build type')
+
+propeties:
+  - cwd : ../
+  - docker_file_path: {$cwd}/docker/Dockerfile
+  - image_name: jk_app
+  - image_tag: '0.1'
+
+rules:
+  build:
+    - docker build -t image_name:image_tag -f docker_file_path .
