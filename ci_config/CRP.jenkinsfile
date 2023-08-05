@@ -15,7 +15,7 @@ pipeline {
                 echo 'welcome to Code Review Pipeline'
                 echo 'Init env values'
                 script {
-                    def config = readYaml file: 'Jenkins.yaml'
+                    def config = readYaml file: 'jenkins_crp.yaml'
                     if (config.parameters.GIT_BRANCH) {
                         env.GIT_BRANCH = config.parameters.GIT_BRANCH
                     }
