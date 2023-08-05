@@ -25,7 +25,7 @@ pipeline {
                     // if (config.parameters.BUILD_TYPE) {
                     //     env.BUILD_TYPE = config.parameters.BUILD_TYPE
                     // }
-                    echo config.properties.project_nmae
+                    echo config.properties.project_name
                     env.CONFIG_CI = config
                 }
             }
