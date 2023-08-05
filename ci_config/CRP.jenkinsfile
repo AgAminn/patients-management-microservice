@@ -1,8 +1,12 @@
 #!/usr/bin/env groovy
+
 pipeline {
     agent any
 
     environment {
+        def config = readYaml file: 'Jenkins.yaml'
+            GIT_BRANCH = config.parameters.GIT_BRANCH
+            BUILD_TYPE = config.parameters.BUILD_TYPE
     }
 
     stages {
@@ -11,6 +15,7 @@ pipeline {
             steps {
                 echo 'welcome to Code Review Pipeline'
                 echo 'Init env values'
+                
 
             }
         }
@@ -25,7 +30,14 @@ pipeline {
         stage ("Build" ) {
             steps {
                 echo 'Build docker image'
-                echo 'tag docker image'
+                // docker build -t jkz-app:0.1 .
+                
+            }
+        }
+
+        stage ("Publish" ) {
+            steps {
+                echo 'Publish docker image'
                 
             }
         }
