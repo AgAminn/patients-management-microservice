@@ -4,9 +4,8 @@ pipeline {
     agent any
 
     environment {
-        def config = readYaml file: 'Jenkins.yaml'
-            GIT_BRANCH = 'main'
-            BUILD_TYPE = 'debug'
+        GIT_BRANCH = 'main'
+        BUILD_TYPE = 'debug'
     }
 
     stages {
@@ -15,14 +14,15 @@ pipeline {
             steps {
                 echo 'welcome to Code Review Pipeline'
                 echo 'Init env values'
-                def config = readYaml file: 'Jenkins.yaml'
-                if (config.parameters.GIT_BRANCH) {
-                    env.GIT_BRANCH = config.parameters.GIT_BRANCH
+                script {
+                    def config = readYaml file: 'Jenkins.yaml'
+                    if (config.parameters.GIT_BRANCH) {
+                        env.GIT_BRANCH = config.parameters.GIT_BRANCH
+                    }
+                    if (config.parameters.BUILD_TYPE) {
+                        env.BUILD_TYPE = config.parameters.BUILD_TYPE
+                    }
                 }
-                if (config.parameters.BUILD_TYPE) {
-                    env.BUILD_TYPE = config.parameters.BUILD_TYPE
-                }
-
             }
         }
 
