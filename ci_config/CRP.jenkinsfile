@@ -4,8 +4,9 @@ pipeline {
     agent any
 
     environment {
-        GIT_BRANCH = 'main'
-        BUILD_TYPE = 'debug'
+        GIT_BRANCH = "${git_branch}"
+        BUILD_TYPE = "debug"
+        CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
     }
 
     stages {
@@ -16,13 +17,14 @@ pipeline {
                 echo 'Init env values'
                 // echo $PWD
                 script {
-                    def config = readYaml file: 'ci_config/jenkins_crp.yaml'
-                    if (config.parameters.GIT_BRANCH) {
-                        env.GIT_BRANCH = config.parameters.GIT_BRANCH
-                    }
-                    if (config.parameters.BUILD_TYPE) {
-                        env.BUILD_TYPE = config.parameters.BUILD_TYPE
-                    }
+                    // def config = readYaml file: 'ci_config/jenkins_crp.yaml'
+                    // if (CONFIG_CI.parameters.GIT_BRANCH) {
+                    //     env.GIT_BRANCH = config.parameters.GIT_BRANCH
+                    // }
+                    // if (config.parameters.BUILD_TYPE) {
+                    //     env.BUILD_TYPE = config.parameters.BUILD_TYPE
+                    // }
+                    echo CONFIG_CI.properties.project_nmae
                 }
             }
         }
