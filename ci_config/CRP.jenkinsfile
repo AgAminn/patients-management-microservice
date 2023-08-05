@@ -4,9 +4,8 @@ pipeline {
     agent any
 
     environment {
-        def config = readYaml file: 'Jenkins.yaml'
-            GIT_BRANCH = 'main'
-            BUILD_TYPE = 'debug'
+        GIT_BRANCH = 'main'
+        BUILD_TYPE = 'debug'
     }
 
     stages {
@@ -22,6 +21,7 @@ pipeline {
                 if (config.parameters.BUILD_TYPE) {
                     env.BUILD_TYPE = config.parameters.BUILD_TYPE
                 }
+                
 
             }
         }
