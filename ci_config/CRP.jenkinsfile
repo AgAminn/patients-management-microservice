@@ -16,7 +16,7 @@ pipeline {
                 echo 'Init env values'
                 // echo $PWD
                 script {
-                    def config = readYaml file: 'ci/configjenkins_crp.yaml'
+                    def config = readYaml file: 'ci_config/jenkins_crp.yaml'
                     if (config.parameters.GIT_BRANCH) {
                         env.GIT_BRANCH = config.parameters.GIT_BRANCH
                     }
