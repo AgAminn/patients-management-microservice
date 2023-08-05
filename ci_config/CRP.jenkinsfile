@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
+// def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
 
 pipeline {
     agent any
@@ -18,14 +18,15 @@ pipeline {
                 echo 'Init env values'
                 // echo $PWD
                 script {
-                    // def config = readYaml file: 'ci_config/jenkins_crp.yaml'
+                    def config = readYaml file: 'ci_config/jenkins_crp.yaml'
                     // if (CONFIG_CI.parameters.GIT_BRANCH) {
                     //     env.GIT_BRANCH = config.parameters.GIT_BRANCH
                     // }
                     // if (config.parameters.BUILD_TYPE) {
                     //     env.BUILD_TYPE = config.parameters.BUILD_TYPE
                     // }
-                    echo configx.properties.project_nmae
+                    echo config.properties.project_nmae
+                    env.CONFIG_CI = config
                 }
             }
         }
