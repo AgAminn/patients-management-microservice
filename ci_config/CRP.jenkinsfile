@@ -28,9 +28,10 @@ pipeline {
                     initCommands = config.stages.init
                     // echo initCommands
                     for (String command : initCommands) {
-                        sh """#!/bin/bash
-                        ${command}
-                        """
+                        // sh """#!/bin/bash
+                        // ${command}
+                        // """
+                        command
                     }
                 }
             }
