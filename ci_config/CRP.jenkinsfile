@@ -26,8 +26,8 @@ pipeline {
                     // echo config.properties.project_name
                     // sh "${config.stages.init}"
                     initCommands = config.stages.init
-                    echo initCommands
-                    for (String command : initCommands.message) {
+                    // echo initCommands
+                    for (String command : initCommands) {
                         echo 'from for loop'
                         echo command
                     }
