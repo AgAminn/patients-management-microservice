@@ -2,9 +2,9 @@
 // def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
 
 pipeline {
-    // options {
-    //     timeout(time: 1, unit: 'HOURS')   // timeout on whole pipeline job
-    // }
+    options {
+        timeout(time: 1, unit: 'HOURS')   // timeout on whole pipeline job
+    }
     agent any
 
     environment {
@@ -29,6 +29,7 @@ pipeline {
                     // for (String command : initCommands) {
                     //     sh command
                     // }
+                }
             }
         }
 
