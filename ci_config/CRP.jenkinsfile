@@ -28,8 +28,7 @@ pipeline {
                     initCommands = config.stages.init
                     // echo initCommands
                     for (String command : initCommands) {
-                        echo 'from for loop'
-                        echo command
+                        sh command
                     }
                 }
             }
