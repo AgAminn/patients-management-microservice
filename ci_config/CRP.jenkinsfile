@@ -14,12 +14,11 @@ pipeline {
         
         stage ("Init" ) {
             steps {
-                config = readYaml file: 'ci_config/jenkins_crp.yaml'
                 script {
                     echo 'welcome to Code Review Pipeline'
                     echo 'Init env values'
-                    
-                    
+                    def config = readYaml file: "ci_config/jenkins_crp.yaml"
+
                     sh 'pwd' // Print current working directory
                     sh 'ls -lR'
                     // if (CONFIG_CI.parameters.GIT_BRANCH) {
@@ -29,9 +28,10 @@ pipeline {
                     //     env.BUILD_TYPE = config.parameters.BUILD_TYPE
                     // }
                     // echo config
+                    // echo config['properties']['project_name'][0][0]
                     echo config.properties.project_name
-                    env.CONFIG_CI = config
-                    echo CONFIG_CI.properties.project_name
+                    // env.CONFIG_CI = config
+                    // echo CONFIG_CI.properties.project_name
                 }
             }
         }
