@@ -14,7 +14,7 @@ pipeline {
         
         stage ("Init" ) {
             steps {
-                def config = readYaml file: 'ci_config/jenkins_crp.yaml'
+                config = readYaml file: 'ci_config/jenkins_crp.yaml'
                 script {
                     echo 'welcome to Code Review Pipeline'
                     echo 'Init env values'
