@@ -2,6 +2,9 @@
 // def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
 
 pipeline {
+    options {
+        timeout(time: 1, unit: 'HOURS')   // timeout on whole pipeline job
+    }
     agent any
 
     environment {
@@ -21,8 +24,11 @@ pipeline {
                     sh 'pwd' // Print current working directory
                     sh 'ls -lR' 
                     // echo config.properties.project_name
-                    sh "${config.init}"
-                }
+                    // sh "${config.init}"
+                    initCommands = config.init
+                    for (String command : initCommands) {
+                        sh command
+                    }
             }
         }
 
