@@ -2,12 +2,17 @@
 // def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
 
 pipeline {
-    agent any
+    // agent any
+    agent {
+        node {
+            def config = readYaml file: 'ci_config/jenkins_crp.yaml'
+        }
+    }
 
     environment {
         GIT_BRANCH = "${git_branch}"
         BUILD_TYPE = "debug"
-        CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
+        // CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
         
     }
 
@@ -30,9 +35,9 @@ pipeline {
                     // }
                     // echo config
                     // echo config['properties']['project_name'][0][0]
-                    // echo config.properties.project_name
+                    echo config.properties.project_name
                     // env.CONFIG_CI = config
-                    echo env.CONFIG_CI.properties.project_name
+                    // echo env.CONFIG_CI.properties.project_name
                 }
             }
         }
