@@ -27,7 +27,7 @@ pipeline {
                     // sh "${config.init}"
                     initCommands = config.init
                     for (String command : initCommands) {
-                        sh command
+                        echo command
                     }
                 }
             }
