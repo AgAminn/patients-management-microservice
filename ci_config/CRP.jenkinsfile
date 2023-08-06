@@ -21,7 +21,7 @@ pipeline {
                     sh 'pwd' // Print current working directory
                     sh 'ls -lR' 
                     // echo config.properties.project_name
-                    sh config.init
+                    sh "${config.init}"
                 }
             }
         }
