@@ -24,13 +24,13 @@ pipeline {
                     sh 'pwd' // Print current working directory
                     sh 'ls -lR' 
                     // echo config.properties.project_name
-                    sh "${config.stages.init}"
-                    // initCommands = config.init
-                    // echo initCommands
-                    // for (String command : initCommands) {
-                    //     echo 'from for loop'
-                    //     echo command
-                    // }
+                    // sh "${config.stages.init}"
+                    initCommands = config.stages.init
+                    echo initCommands
+                    for (String command : initCommands) {
+                        echo 'from for loop'
+                        echo command
+                    }
                 }
             }
         }
