@@ -26,6 +26,7 @@ pipeline {
                     // echo config.properties.project_name
                     // sh "${config.init}"
                     initCommands = config.init
+                    echo initCommands
                     for (String command : initCommands) {
                         echo 'from for loop'
                         echo command
