@@ -25,10 +25,10 @@ pipeline {
                     sh 'ls -lR' 
                     // echo config.properties.project_name
                     // sh "${config.init}"
-                    initCommands = config.init
-                    for (String command : initCommands) {
-                        sh command
-                    }
+                    // initCommands = config.init
+                    // for (String command : initCommands) {
+                    //     sh command
+                    // }
             }
         }
 
