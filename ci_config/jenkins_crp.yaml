@@ -18,7 +18,7 @@ env:
 stages:
   init:
     - echo finished loading jenkins_crp.yaml
-    - echo project name ${config.properties.project_name}
+    - echo project name ${properties.project_name}
     - git branch --show-current
     - "echo git branch name ${env.CURRENT_GIT_BRANCH}"
   build:
