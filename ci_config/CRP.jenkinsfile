@@ -32,7 +32,7 @@ pipeline {
                     // echo config['properties']['project_name'][0][0]
                     // echo config.properties.project_name
                     // env.CONFIG_CI = config
-                    echo CONFIG_CI.properties.project_name
+                    echo env.CONFIG_CI.properties.project_name
                 }
             }
         }
