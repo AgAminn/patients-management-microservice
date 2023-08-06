@@ -6,6 +6,7 @@ pipeline {
     agent {
         node {
             def config = readYaml file: 'ci_config/jenkins_crp.yaml'
+            label 'main'
         }
     }
 
@@ -19,6 +20,9 @@ pipeline {
     stages {
         
         stage ("Init" ) {
+            agent {
+                label 'main'
+            }
             steps {
                 script {
                     echo 'welcome to Code Review Pipeline'
