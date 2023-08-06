@@ -27,14 +27,19 @@ pipeline {
                     sh 'ls -lR' 
                     // echo config.properties.project_name
                     // sh "${config.stages.init}"
-                    initCommands = config.stages.init
-                    config.stages.initi
+                    // initCommands = config.stages.init
                     // echo initCommands
-                    for (String command : initCommands) {
+                    // for (String command : initCommands) {
                         // sh """#!/bin/bash
                         // ${command}
                         // """
-                    }
+                    // }
+
+                    sh 'echo finished loading jenkins_crp.yaml'
+                    sh "echo project name ${env.PROJECT_NAME}"
+                    sh 'git branch --show-current'
+                    sh "echo git branch name ${env.CURRENT_GIT_BRANCH}"
+
                 }
             }
         }
@@ -42,7 +47,7 @@ pipeline {
         stage ("Test" ) {
             steps {
                 echo 'check code quqlity'
-                echo config.properties.project_name
+                
                 
             }
         }
