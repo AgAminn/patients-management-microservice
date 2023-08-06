@@ -22,7 +22,7 @@ stages:
     - sh 'git branch --show-current'
     - sh "echo git branch name ${env.CURRENT_GIT_BRANCH}"
   initi:
-    - sh 
+    - sh
       '''
       #!/bin/bash
       echo finished loading jenkins_crp.yaml

@@ -26,12 +26,12 @@ pipeline {
                     // echo config.properties.project_name
                     // sh "${config.stages.init}"
                     initCommands = config.stages.init
+                    config.stages.initi
                     // echo initCommands
                     for (String command : initCommands) {
                         // sh """#!/bin/bash
                         // ${command}
                         // """
-                        command
                     }
                 }
             }
