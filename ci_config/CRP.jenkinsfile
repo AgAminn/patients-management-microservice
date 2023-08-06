@@ -29,7 +29,6 @@ pipeline {
                     // echo initCommands
                     for (String command : initCommands) {
                         sh '''
-                           #!/bin/bash
                            ${command}
                            '''
                     }
