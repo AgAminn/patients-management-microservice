@@ -2,19 +2,11 @@
 // def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
 
 pipeline {
-    // agent any
-    agent {
-        node {
-            def config = readYaml file: 'ci_config/jenkins_crp.yaml'
-            label 'main'
-        }
-    }
+    agent any
 
     environment {
         GIT_BRANCH = "${git_branch}"
         BUILD_TYPE = "debug"
-        // CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
-        
     }
 
     stages {
@@ -27,21 +19,11 @@ pipeline {
                 script {
                     echo 'welcome to Code Review Pipeline'
                     echo 'Init env values'
-                    // def config = readYaml file: "ci_config/jenkins_crp.yaml"
+                    config = readYaml file: "ci_config/jenkins_crp.yaml"
 
                     sh 'pwd' // Print current working directory
-                    sh 'ls -lR'
-                    // if (CONFIG_CI.parameters.GIT_BRANCH) {
-                    //     env.GIT_BRANCH = config.parameters.GIT_BRANCH
-                    // }
-                    // if (config.parameters.BUILD_TYPE) {
-                    //     env.BUILD_TYPE = config.parameters.BUILD_TYPE
-                    // }
-                    // echo config
-                    // echo config['properties']['project_name'][0][0]
+                    sh 'ls -lR' 
                     echo config.properties.project_name
-                    // env.CONFIG_CI = config
-                    // echo env.CONFIG_CI.properties.project_name
                 }
             }
         }
