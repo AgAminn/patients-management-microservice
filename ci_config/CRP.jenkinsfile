@@ -29,8 +29,7 @@ pipeline {
                     // echo initCommands
                     for (String command : initCommands) {
                         sh """#!/bin/bash
-                        echo heloo there
-                        command
+                        ${command}
                         """
                     }
                 }
