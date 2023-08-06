@@ -8,8 +8,10 @@ pipeline {
     agent any
 
     environment {
+        config = readYaml file: "ci_config/jenkins_crp.yaml"
         CURRENT_GIT_BRANCH = "${git_branch}"
         BUILD_TYPE = "debug"
+        PROJECT_NAME = config.properties.project_name
     }
 
     stages {
