@@ -17,10 +17,10 @@ env:
 
 stages:
   init:
-    - sh 'echo finished loading jenkins_crp.yaml'
-    - sh "echo project name ${properties.project_name}"
-    - sh 'git branch --show-current'
-    - sh "echo git branch name ${env.CURRENT_GIT_BRANCH}"
+    - echo finished loading jenkins_crp.yaml
+    - echo project name ${properties.project_name}
+    - git branch --show-current
+    - echo git branch name ${env.CURRENT_GIT_BRANCH}
   initi:
     - sh
       '''
