@@ -5,7 +5,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_BRANCH = "${git_branch}"
+        CURRENT_GIT_BRANCH = "${git_branch}"
         BUILD_TYPE = "debug"
     }
 
@@ -20,7 +20,8 @@ pipeline {
 
                     sh 'pwd' // Print current working directory
                     sh 'ls -lR' 
-                    echo config.properties.project_name
+                    // echo config.properties.project_name
+                    sh config.init
                 }
             }
         }

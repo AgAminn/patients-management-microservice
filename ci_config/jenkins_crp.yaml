@@ -13,7 +13,13 @@ properties:
 
 env:
   - PWD
+  - CURRENT_GIT_BRANCH
 
-rules:
+stages:
+  init:
+    - echo finished loading jenkins_crp.yaml
+    - echo project name ${properties.project_name}
+    - git branch --show-current
+    - echo git branch name ${env.CURRENT_GIT_BRANCH}
   build:
     - docker build -t image_name:image_tag -f docker_file_path .
