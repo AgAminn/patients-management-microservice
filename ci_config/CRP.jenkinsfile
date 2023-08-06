@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 // def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
-
+def config = readYaml file: 'ci_config/jenkins_crp.yaml'
 pipeline {
     agent any
 
@@ -15,7 +15,7 @@ pipeline {
         stage ("Init" ) {
             steps {
                 script {
-                    def config = readYaml file: 'ci_config/jenkins_crp.yaml'
+                    
                     echo 'welcome to Code Review Pipeline'
                     echo 'Init env values'
                     echo 'PWD'
@@ -29,9 +29,9 @@ pipeline {
                     // }
                     // echo config
                     echo config.properties.project_name
+                    env.CONFIG_CI = config
+                    echo CONFIG_CI.properties.project_name
                 }
-                env.CONFIG_CI = config
-                echo CONFIG_CI.properties.project_name
             }
         }
 
