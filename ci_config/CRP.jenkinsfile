@@ -12,9 +12,6 @@ pipeline {
     stages {
         
         stage ("Init" ) {
-            agent {
-                label 'main'
-            }
             steps {
                 script {
                     echo 'welcome to Code Review Pipeline'
