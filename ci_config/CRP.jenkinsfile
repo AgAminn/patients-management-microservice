@@ -1,13 +1,14 @@
 #!/usr/bin/env groovy
 // def configx = readYaml file: 'ci_config/jenkins_crp.yaml'
-def config = readYaml file: "ci_config/jenkins_crp.yaml"
+
 pipeline {
     agent any
 
     environment {
         GIT_BRANCH = "${git_branch}"
         BUILD_TYPE = "debug"
-        // CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
+        CONFIG_CI = "${readYaml file: 'ci_config/jenkins_crp.yaml'}"
+        
     }
 
     stages {
@@ -17,7 +18,7 @@ pipeline {
                 script {
                     echo 'welcome to Code Review Pipeline'
                     echo 'Init env values'
-                    
+                    // def config = readYaml file: "ci_config/jenkins_crp.yaml"
 
                     sh 'pwd' // Print current working directory
                     sh 'ls -lR'
@@ -29,9 +30,9 @@ pipeline {
                     // }
                     // echo config
                     // echo config['properties']['project_name'][0][0]
-                    echo config.properties.project_name
+                    // echo config.properties.project_name
                     // env.CONFIG_CI = config
-                    // echo CONFIG_CI.properties.project_name
+                    echo CONFIG_CI.properties.project_name
                 }
             }
         }
