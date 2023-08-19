@@ -16,11 +16,11 @@ pipeline {
 
     stages {
 
-        stage('Display Information') {
+        stage('Display Repo Information') {
             steps {
                 script {
                     // Get current workspace
-                    def workspacePath = pwd()
+                    // def workspacePath = pwd()
 
                     // // Clone the GitHub repository
                     // checkout scm
@@ -29,17 +29,19 @@ pipeline {
                     def fileList = sh(script: 'git ls-files', returnStdout: true).trim()
 
                     // Get the source branch that triggered the pipeline
-                    def sourceBranch = env.BRANCH_NAME
+                    // def sourceBranch = env.BRANCH_NAME
 
-                    echo "Current Workspace: ${workspacePath}"
+                    echo "Current Workspace: ${pwd()}"
                     echo "List of Files:"
                     echo "${fileList}"
-                    echo "Source Git Branch: ${sourceBranch}"
+                    echo "Source Git Branch: ${env.BRANCH_NAME}"
+                    echo 'welcome to Code Review Pipeline'
+                    
                 }
             }
         }
         
-        stage ("Init" ) {
+        stage ('Init' ) {
             steps {
                 script {
                     echo 'welcome to Code Review Pipeline'
