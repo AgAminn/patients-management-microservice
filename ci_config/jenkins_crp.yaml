@@ -4,12 +4,8 @@
 
 properties:
   project_name: ms_template_init
-  cwd : ../
-  docker_file_path: ${cwd}/docker/Dockerfile
   image_name: jk_app
-  image_tag: '0.1'
-  src_path : ${env.PWD}/src
-  ci_config_path: ${env.PWD}/ci_config
+  image_tag: '0.0.1'
 
 env:
   - PWD

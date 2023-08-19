@@ -15,6 +15,29 @@ pipeline {
     }
 
     stages {
+
+        stage('Display Information') {
+            steps {
+                script {
+                    // Get current workspace
+                    def workspacePath = pwd()
+
+                    // // Clone the GitHub repository
+                    // checkout scm
+
+                    // Get list of files in the repository
+                    def fileList = sh(script: 'git ls-files', returnStdout: true).trim()
+
+                    // Get the source branch that triggered the pipeline
+                    def sourceBranch = env.BRANCH_NAME
+
+                    echo "Current Workspace: ${workspacePath}"
+                    echo "List of Files:"
+                    echo "${fileList}"
+                    echo "Source Git Branch: ${sourceBranch}"
+                }
+            }
+        }
         
         stage ("Init" ) {
             steps {
@@ -37,7 +60,6 @@ pipeline {
 
                     sh 'echo finished loading jenkins_crp.yaml'
                     sh "echo project name ${env.PROJECT_NAME}"
-                    sh 'git branch --show-current'
                     sh "echo git branch name ${env.CURRENT_GIT_BRANCH}"
 
                 }
