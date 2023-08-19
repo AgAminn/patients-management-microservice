@@ -39,7 +39,7 @@ pipeline {
 
                     config = readYaml file: "ci_config/jenkins_crp.yaml"
                     sh """#!/bin/bash
-                        config.stages.init
+                        ${config.stages.init}
                         """
                 }
             }
