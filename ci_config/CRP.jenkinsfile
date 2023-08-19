@@ -38,8 +38,7 @@ pipeline {
                     // echo 'welcome to Code Review Pipeline'
 
                     config = readYaml file: "ci_config/jenkins_crp.yaml"
-                    // config.stages.init
-                    sh(script: config.stages.init , returnStdout: true).trim()
+                    eval(config.stages.init)
                 }
             }
         }
