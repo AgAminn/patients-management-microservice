@@ -13,7 +13,7 @@ env:
   - PROJECT_NAME
 
 stages:
-  init: echo Source Git Branch "${env.CURRENT_GIT_BRANCH}"
+  init: "echo Source Git Branch ${env.BRANCH_NAME}"
 
   build:
     - docker build -t image_name:image_tag -f docker_file_path .
