@@ -17,7 +17,7 @@ stages:
     # echo "Current Workspace ${pwd()}"
     # echo "List of Files:"
     # echo "${fileList}"
-    echo "Source Git Branch ${env.BRANCH_NAME}"
+    echo Source Git Branch "${env.BRANCH_NAME}"
     echo "welcome to Code Review Pipeline"
     echo finished loading jenkins_crp.yaml
     echo project name ${env.PROJECT_NAME}
