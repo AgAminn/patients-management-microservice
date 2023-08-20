@@ -13,7 +13,14 @@ env:
   - PROJECT_NAME
 
 stages:
-  init: echo Current Workspace "${pwd()}"
+  init: |
+    # echo "Current Workspace ${pwd()}"
+    # echo "List of Files:"
+    # echo "${fileList}"
+    echo "Source Git Branch ${env.BRANCH_NAME}"
+    echo "welcome to Code Review Pipeline"
+    echo finished loading jenkins_crp.yaml
+    echo project name ${env.PROJECT_NAME}
 
   build:
     - docker build -t image_name:image_tag -f docker_file_path .
