@@ -19,7 +19,7 @@ pipeline {
         stage('Init') {
             steps {
                 script {
-                    def properties = readYaml(file: 'jenkins_crp.yaml')
+                    def properties = readYaml(file: 'ci_config/jenkins_crp.yaml')
                     def propertyMap = properties.properties
 
                     propertyMap.each { propName, propValue ->
