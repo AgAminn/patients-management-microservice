@@ -19,20 +19,32 @@ pipeline {
         stage('Init') {
             steps {
                 script {
-                    def properties = readYaml(file: 'ci_config/jenkins_crp.yaml')
-                    def propertyMap = properties.properties
-
-                    propertyMap.each { propName, propValue ->
-                        env."${propName}" = propValue
-                    }
-
-                    echo "Initialized environment variables:"
-                    propertyMap.each { propName, propValue ->
-                        echo "${propName}: ${env."${propName}"}"
-                    }
+                    mkdir(dir:"$pwd/ci_config/tmp")
+                    sh 'echo hiiiiiiiiiiiiii'
+                    // sh -c 'docker --version'
+                    // sh -c 'python --version'
+                    //sh -c "docker run -it --rm pythonim -- /bin/bash -c 'python ci_config\crp_helper.py xfunction'"
                 }
             }
         }
+
+        // stage('Init prime') {
+        //     steps {
+        //         script {
+        //             def properties = readYaml(file: 'ci_config/jenkins_crp.yaml')
+        //             def propertyMap = properties.properties
+
+        //             propertyMap.each { propName, propValue ->
+        //                 env."${propName}" = propValue
+        //             }
+
+        //             echo "Initialized environment variables:"
+        //             propertyMap.each { propName, propValue ->
+        //                 echo "${propName}: ${env."${propName}"}"
+        //             }
+        //         }
+        //     }
+        // }
         
         // stage ('Init' ) {
         //     steps {
